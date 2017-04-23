@@ -39,5 +39,5 @@
 1. select应该拦截StatementHandler里的query(Statement, ResultHandler)方法
 1. update、delete、insert应该拦截StatementHandler里的query(Statement, ResultHandler)方法
 1. 个人比较推荐的做法是在StatementHandler拦截器中拦截，算出需要替换掉的表和目标表。在Executor的拦截器中，替换sql语句。
-对于分表，有多种策略，采用策略模式。原因主要有以下几点：
-    *在executor中，执行的sql是已经生成好了的*
+对于分表，有多种策略，采用策略模式。主要因为：
+    * 在executor中，执行的sql是已经生成好了的，此时再想执行多次分表插入，将参数list分为多个再拼接，会很麻烦。
