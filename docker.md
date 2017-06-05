@@ -1,3 +1,35 @@
+安装docker：
+官方教程：https://store.docker.com/editions/community/docker-ce-server-ubuntu
+
+	1. Set up the repository
+
+	sudo apt-get -y install \
+	  apt-transport-https \
+	  ca-certificates \
+	  curl
+	
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	
+	sudo add-apt-repository \
+	       "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+	       $(lsb_release -cs) \
+	       stable"
+	
+	sudo apt-get update
+	2. Get Docker CE
+	
+	Install the latest version of Docker CE on Ubuntu:
+	
+	sudo apt-get -y install docker-ce
+	3. Test your Docker CE installation
+	
+	Test your installation:
+	
+	sudo docker run hello-world
+
+在vps上安装报错， 执行：apt-get -f install libltdl7 后正常
+在Windows上，无法启动，经排查，是因为360在一次杀毒中把docker的启动项当作病毒处理了，恢复启动项后正常。
+
 2013年docker开源
 2014.06 docker 1.0
 2015年3月份阿里就用进了生产环境
@@ -66,11 +98,11 @@ linux下安装docker：curl -s https://get.docker.com|sh
 
 |指令作用 | 对应指令 |
 |---|----|
-|查看本机所有镜像 | docker image |
+|查看本机所有镜像 | docker images |
 |下载镜像 | docker pull 镜像名|
 |运行容器 | docker run 镜像名|
 |后台运行容器| docker run -d 镜像名|
-|指定端口映射运行容器| docker run -p 1111:11 镜像名|
+|指定端口映射运行容器| docker run -p 1111:11(本机IP:docker内部IP) 镜像名|
 |查看正在运行的容器 | docker ps|
 |进入容器 | docker exec -it 容器名称 bash|
 |停止容器 | docker stop 容器名称|
@@ -124,4 +156,4 @@ docker使用隔离机制保证互不干扰。容器和主机之间会有网络�
 			from  hub.c.163.com/library/tomcat
 			MAINTAINER hhh xxx@qq.com
 			COPY jpress.war /user/local/tomcat/webapps
-		
+

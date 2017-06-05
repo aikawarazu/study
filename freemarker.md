@@ -40,8 +40,8 @@
 
 * numbervar?string("0.##")
 * strvar?date("MM/dd/yyyy")
-* strvar?time("hh:mm:ss")
-* strvar?datetime("MM/dd/yyyy hh:mm:ss")
+* strvar?time("hh`:`mm`:`ss")
+* strvar?datetime("MM/dd/yyyy hh`:`mm`:`ss")
 
 #### 自定义指令与自定义函数
 自定义指令：TemplateMethodModelEx
